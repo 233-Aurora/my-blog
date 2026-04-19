@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>写文章 · 小唐学编程的记录</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/admin.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Marked.js：Markdown 渲染 -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+  <!-- Highlight.js：代码高亮 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/highlight.min.js"></script>
+</head>
+<body>
+
+  <!-- =========================================
+       顶部导航
+       ========================================= -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">📖</span>
+        <span class="logo-text">小唐学编程</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="tags.html" class="nav-link">标签</a>
+        <a href="about.html" class="nav-link">关于</a>
+        <a href="admin.html" class="nav-link nav-link-admin active">✏️ 写文章</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <span class="theme-icon light-icon">☀️</span>
+          <span class="theme-icon dark-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================
+       主编辑区
+       ========================================= -->
+  <main class="admin-main">
+
+    <!-- 编辑器头部：标题输入 + 操作按钮 -->
+    <div class="editor-header">
+      <div class="editor-title-row">
+        <input
+          type="text"
+          id="articleTitle"
+          class="editor-title-input"
+          placeholder="文章标题（必填）"
+          maxlength="100"
+        />
+      </div>
+
+      <!-- 文章元信息 -->
+      <div class="editor-meta-row">
+        <!-- 标签 -->
+        <div class="meta-field">
+          <label class="meta-label">🏷️ 标签</label>
+          <input
+            type="text"
+            id="articleTags"
+            class="meta-input"
+            placeholder="JavaScript, Python, 感悟（逗号分隔）"
+          />
+        </div>
+        <!-- 摘要 -->
+        <div class="meta-field meta-field-wide">
+          <label class="meta-label">📝 摘要</label>
+          <input
+            type="text"
+            id="articleExcerpt"
+            class="meta-input"
+            placeholder="文章简介（不填则自动截取正文前100字）"
+            maxlength="200"
+          />
+        </div>
+        <!-- 精选 -->
+        <div class="meta-field meta-field-checkbox">
+          <label class="meta-label-check">
+            <input type="checkbox" id="articleFeatured" />
+            <span>⭐ 设为精选</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 操作按钮区 -->
+      <div class="editor-actions">
+        <div class="editor-actions-left">
+          <!-- 编辑/预览/分栏 切换 -->
+          <div class="view-toggle">
+            <button class="view-btn active" id="btnEdit" onclick="setView('edit')">✏️ 编写</button>
+            <button class="view-btn" id="btnSplit" onclick="setView('split')">⬛ 分栏</button>
+            <button class="view-btn" id="btnPreview" onclick="setView('preview')">👁 预览</button>
+          </div>
+          <!-- 工具栏 -->
+          <div class="toolbar" id="toolbar">
+            <button class="tool-btn" onclick="insertMarkdown('bold')" title="加粗 (Ctrl+B)"><b>B</b></button>
+            <button class="tool-btn" onclick="insertMarkdown('italic')" title="斜体 (Ctrl+I)"><i>I</i></button>
+            <button class="tool-btn" onclick="insertMarkdown('h2')" title="二级标题">H2</button>
+            <button class="tool-btn" onclick="insertMarkdown('h3')" title="三级标题">H3</button>
+            <div class="tool-divider"></div>
+            <button class="tool-btn" onclick="insertMarkdown('code')" title="行内代码">`</button>
+            <button class="tool-btn" onclick="insertMarkdown('codeblock')" title="代码块">```</button>
+            <button class="tool-btn" onclick="insertMarkdown('link')" title="链接">🔗</button>
+            <button class="tool-btn" onclick="insertMarkdown('image')" title="图片">🖼</button>
+            <div class="tool-divider"></div>
+            <button class="tool-btn" onclick="insertMarkdown('ul')" title="无序列表">•</button>
+            <button class="tool-btn" onclick="insertMarkdown('ol')" title="有序列表">1.</button>
+            <button class="tool-btn" onclick="insertMarkdown('quote')" title="引用">❝</button>
+            <button class="tool-btn" onclick="insertMarkdown('hr')" title="分割线">—</button>
+          </div>
+        </div>
+
+        <div class="editor-actions-right">
+          <!-- 状态信息 -->
+          <span class="save-status" id="saveStatus">📄 未保存</span>
+          <!-- 草稿按钮 -->
+          <button class="btn-draft" id="btnDraft" onclick="saveDraft()">保存草稿</button>
+          <!-- 发布按钮 -->
+          <button class="btn-publish" id="btnPublish" onclick="publishArticle()">🚀 发布博客</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 编辑区主体 -->
+    <div class="editor-body" id="editorBody">
+      <!-- Markdown 输入框 -->
+      <div class="editor-pane" id="editorPane">
+        <textarea
+          id="markdownEditor"
+          class="md-editor"
+          placeholder="# 文章标题
+
+在这里用 Markdown 写作……
+
+## 章节标题
+
+正文段落。**加粗** 和 *斜体* 都支持。
+
+\`\`\`javascript
+// 代码块示例
+function hello() {
+  console.log('Hello, 小唐！');
+}
+\`\`\`
+
+> 引用块：记录学习过程中的感悟。
+
+- 列表项 1
+- 列表项 2
+"
+        ></textarea>
+        <!-- 底部字数统计 -->
+        <div class="editor-footer-bar">
+          <span id="wordCount">0 字</span>
+          <span id="readTimeEst">约 0 分钟阅读</span>
+        </div>
+      </div>
+
+      <!-- 预览面板 -->
+      <div class="preview-pane" id="previewPane" style="display:none;">
+        <div class="preview-inner markdown-body" id="previewContent">
+          <p class="preview-placeholder">在左侧开始输入，实时预览将显示在这里……</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- =========================================
+       文章管理侧边栏（抽屉式）
+       ========================================= -->
+  <button class="articles-drawer-btn" id="articlesDrawerBtn" onclick="toggleDrawer()" title="管理已发布文章">
+    📋 文章管理
+  </button>
+
+  <div class="articles-drawer" id="articlesDrawer">
+    <div class="drawer-header">
+      <h3>📋 文章管理</h3>
+      <button class="drawer-close" onclick="toggleDrawer()">✕</button>
+    </div>
+    <div class="drawer-tabs">
+      <button class="drawer-tab active" onclick="switchDrawerTab('published', this)">已发布</button>
+      <button class="drawer-tab" onclick="switchDrawerTab('drafts', this)">草稿</button>
+    </div>
+    <div class="drawer-list" id="drawerList">
+      <!-- 由 JS 动态渲染 -->
+    </div>
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+
+  <!-- =========================================
+       发布成功提示
+       ========================================= -->
+  <div class="toast" id="toast"></div>
+
+  <!-- =========================================
+       脚本
+       ========================================= -->
+  <script src="scripts/data.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/admin.js"></script>
+</body>
+</html>

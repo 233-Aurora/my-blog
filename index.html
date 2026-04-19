@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小唐学编程的记录 - 唐子琪的编程成长博客</title>
+  <meta name="description" content="唐子琪的个人编程学习博客，记录学习笔记、项目复盘和技术感悟。" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/home.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">📖</span>
+        <span class="logo-text">小唐学编程</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">首页</a>
+        <a href="tags.html" class="nav-link">标签</a>
+        <a href="about.html" class="nav-link">关于</a>
+        <a href="admin.html" class="nav-link nav-link-admin">✏️ 写文章</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <span class="theme-icon light-icon">☀️</span>
+          <span class="theme-icon dark-icon">🌙</span>
+        </button>
+        <button class="nav-menu-btn" id="navMenuBtn" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile-menu" id="navMobileMenu">
+      <a href="index.html" class="mobile-link active">首页</a>
+      <a href="tags.html" class="mobile-link">标签</a>
+      <a href="about.html" class="mobile-link">关于</a>
+      <a href="admin.html" class="mobile-link">✏️ 写文章</a>
+    </div>
+  </nav>
+
+  <!-- Hero 区域 -->
+  <header class="hero">
+    <div class="hero-bg">
+      <div class="hero-particles" id="heroParticles"></div>
+      <div class="hero-code-bg">
+        <pre class="floating-code">
+const tang = {
+  name: '唐子琪',
+  passion: 'coding',
+  blog: '小唐学编程的记录'
+};
+
+function learn(topic) {
+  return notes + growth;
+}</pre>
+      </div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">📖 编程学习日志</div>
+      <h1 class="hero-title">Hi，我是<span class="gradient-text">唐子琪</span><br/>这里记录我学编程的点滴</h1>
+      <p class="hero-desc">学习笔记、项目复盘、技术感悟……<br/>愿这些文字也能对你有所帮助。</p>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-num" data-count="12">0</span><span class="stat-label">篇文章</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num" data-count="12">0</span><span class="stat-label">个标签</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat-item"><span class="stat-num" data-count="365">0</span><span class="stat-label">天记录</span></div>
+      </div>
+      <div class="hero-cta">
+        <a href="#articles" class="btn-hero-primary">浏览文章</a>
+        <a href="admin.html" class="btn-hero-secondary">✏️ 发布博客</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content" id="articles">
+    <div class="container">
+      <!-- 搜索和筛选栏 -->
+      <div class="filter-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="搜索文章标题、内容..." />
+          <button class="search-clear" id="searchClear" aria-label="清空">✕</button>
+        </div>
+        <div class="filter-tags" id="filterTags">
+          <button class="filter-tag active" data-tag="all">全部</button>
+          <button class="filter-tag" data-tag="JavaScript">JavaScript</button>
+          <button class="filter-tag" data-tag="Python">Python</button>
+          <button class="filter-tag" data-tag="算法">算法</button>
+          <button class="filter-tag" data-tag="项目复盘">项目复盘</button>
+          <button class="filter-tag" data-tag="工具">工具</button>
+          <button class="filter-tag" data-tag="感悟">感悟</button>
+        </div>
+        <div class="filter-sort">
+          <select class="sort-select" id="sortSelect">
+            <option value="date-desc">最新优先</option>
+            <option value="date-asc">最早优先</option>
+            <option value="read-asc">阅读最短</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 文章统计 -->
+      <div class="articles-meta">
+        <span class="articles-count" id="articlesCount">共 12 篇文章</span>
+        <a href="admin.html" class="btn-publish-inline">+ 发布新文章</a>
+      </div>
+
+      <!-- 文章卡片网格 -->
+      <div class="articles-grid" id="articlesGrid">
+        <!-- 由 JS 动态渲染 -->
+      </div>
+
+      <!-- 无结果提示 -->
+      <div class="no-results" id="noResults" style="display:none;">
+        <div class="no-results-icon">🔭</div>
+        <p>没有找到相关文章</p>
+        <button class="btn-reset" onclick="resetFilter()">清除筛选条件</button>
+      </div>
+
+      <!-- 加载更多 -->
+      <div class="load-more-wrapper" id="loadMoreWrapper">
+        <button class="btn-load-more" id="loadMoreBtn">加载更多文章 ↓</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">📖 小唐学编程的记录</div>
+          <p class="footer-tagline">用代码丈量世界，用文字记录成长 · 唐子琪</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+            <a href="#" class="social-link" title="邮箱">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>导航</h4>
+            <a href="index.html">首页</a>
+            <a href="tags.html">标签分类</a>
+            <a href="about.html">关于我</a>
+            <a href="admin.html">写文章</a>
+          </div>
+          <div class="footer-col">
+            <h4>友情链接</h4>
+            <a href="https://developer.mozilla.org" target="_blank">MDN Docs</a>
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://stackoverflow.com" target="_blank">Stack Overflow</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 唐子琪 · 小唐学编程的记录 · 用心记录，持续成长</p>
+        <p class="footer-icp">粤ICP备XXXXXXXX号</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="scroll-top" id="scrollTop" title="回到顶部">↑</div>
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/home.js"></script>
+</body>
+</html>

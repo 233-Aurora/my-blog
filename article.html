@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文章详情 - 小唐学编程的记录</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/article.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- marked.js for Markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+  <!-- highlight.js for code -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11/styles/github-dark.min.css" id="hlTheme" />
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11/highlight.min.js"></script>
+</head>
+<body>
+  <!-- 进度条 -->
+  <div class="reading-progress" id="readingProgress"></div>
+
+  <!-- 顶部导航 -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">📖</span>
+        <span class="logo-text">小唐学编程</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="tags.html" class="nav-link">标签</a>
+        <a href="about.html" class="nav-link">关于</a>
+        <a href="admin.html" class="nav-link nav-link-admin">✏️ 写文章</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <span class="theme-icon light-icon">☀️</span>
+          <span class="theme-icon dark-icon">🌙</span>
+        </button>
+        <button class="nav-menu-btn" id="navMenuBtn" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile-menu" id="navMobileMenu">
+      <a href="index.html" class="mobile-link">首页</a>
+      <a href="tags.html" class="mobile-link">标签</a>
+      <a href="about.html" class="mobile-link">关于</a>
+      <a href="admin.html" class="mobile-link">✏️ 写文章</a>
+    </div>
+  </nav>
+
+  <!-- 文章主体 -->
+  <div class="article-layout" id="articleLayout" style="display:none;">
+    <!-- 主内容 -->
+    <main class="article-main">
+      <!-- 文章头部 -->
+      <header class="article-header" id="articleHeader">
+        <a href="index.html" class="back-link">← 返回文章列表</a>
+        <div class="article-hero-thumb" id="articleHeroThumb"></div>
+        <div class="article-meta-tags" id="articleMetaTags"></div>
+        <h1 class="article-title" id="articleTitle">文章标题</h1>
+        <p class="article-excerpt" id="articleExcerpt"></p>
+        <div class="article-meta-bar">
+          <div class="meta-left">
+            <img src="" alt="作者" class="author-avatar" id="authorAvatar" />
+            <div class="author-info">
+              <span class="author-name" id="authorName"></span>
+              <span class="article-date" id="articleDate"></span>
+            </div>
+          </div>
+          <div class="meta-right">
+            <span class="meta-badge">⏱️ <span id="readTime"></span> 分钟</span>
+            <button class="btn-copy-link" id="btnCopyLink" title="复制链接">🔗</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Markdown 内容 -->
+      <article class="article-content markdown-body" id="articleContent">
+        <div class="article-loading">
+          <div class="spinner"></div>
+          <p>正在加载文章...</p>
+        </div>
+      </article>
+
+      <!-- 文章底部导航 -->
+      <nav class="article-nav" id="articleNav">
+        <a href="#" class="article-nav-item prev" id="prevArticle" style="display:none;">
+          <span class="nav-direction">← 上一篇</span>
+          <span class="nav-title" id="prevTitle"></span>
+        </a>
+        <a href="#" class="article-nav-item next" id="nextArticle" style="display:none;">
+          <span class="nav-direction">下一篇 →</span>
+          <span class="nav-title" id="nextTitle"></span>
+        </a>
+      </nav>
+
+      <!-- 评论区 -->
+      <section class="comment-section">
+        <h3 class="comment-title">💬 留下你的想法</h3>
+        <div class="comment-form">
+          <div class="comment-form-row">
+            <input type="text" class="comment-input" placeholder="你的名字" />
+            <input type="email" class="comment-input" placeholder="邮箱（不公开）" />
+          </div>
+          <textarea class="comment-textarea" placeholder="写下你的想法... 支持 Markdown 语法" rows="4"></textarea>
+          <button class="comment-submit">发表评论</button>
+        </div>
+        <div class="comment-list">
+          <div class="comment-item">
+            <div class="comment-avatar">🙋</div>
+            <div class="comment-body">
+              <div class="comment-author-row">
+                <span class="comment-author">前端小白</span>
+                <span class="comment-time">2026-04-10</span>
+              </div>
+              <p class="comment-text">写得太好了！闭包一直是我的薄弱点，看完这篇终于懂了，感谢博主！</p>
+            </div>
+          </div>
+          <div class="comment-item">
+            <div class="comment-avatar">👨‍💻</div>
+            <div class="comment-body">
+              <div class="comment-author-row">
+                <span class="comment-author">张同学</span>
+                <span class="comment-time">2026-04-08</span>
+              </div>
+              <p class="comment-text">代码示例很直观，循环中的闭包陷阱部分让我恍然大悟，之前一直搞错！</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 侧边栏 -->
+    <aside class="article-sidebar" id="articleSidebar">
+      <!-- 目录 -->
+      <div class="sidebar-card toc-card" id="tocCard">
+        <div class="sidebar-card-header">
+          <span>📑 文章目录</span>
+          <button class="toc-toggle" id="tocToggle">收起</button>
+        </div>
+        <nav class="toc-nav" id="tocNav">
+          <!-- 由 JS 生成 -->
+        </nav>
+      </div>
+
+      <!-- 作者信息 -->
+      <div class="sidebar-card author-card">
+        <div class="sidebar-author-avatar" id="sidebarAvatar"></div>
+        <div class="sidebar-author-name" id="sidebarName"></div>
+        <p class="sidebar-author-bio" id="sidebarBio"></p>
+        <div class="sidebar-author-links">
+          <a href="#" class="sidebar-social-btn">GitHub</a>
+          <a href="#" class="sidebar-social-btn">邮箱</a>
+        </div>
+      </div>
+
+      <!-- 相关推荐 -->
+      <div class="sidebar-card related-card" id="relatedCard">
+        <div class="sidebar-card-header"><span>🔖 相关推荐</span></div>
+        <div class="related-list" id="relatedList"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 404 提示 -->
+  <div class="article-404" id="article404" style="display:none;">
+    <div class="error-icon">😅</div>
+    <h2>文章不存在</h2>
+    <p>可能是链接有误或文章已删除</p>
+    <a href="index.html" class="btn-go-home">返回首页</a>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">⌨️ CodeJourney</div>
+          <p class="footer-tagline">用代码丈量世界，用文字记录成长</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+            <a href="#" class="social-link" title="邮箱">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>导航</h4>
+            <a href="index.html">首页</a>
+            <a href="tags.html">标签分类</a>
+            <a href="about.html">关于我</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 CodeJourney · 用心记录，持续成长</p>
+        <p class="footer-icp">粤ICP备XXXXXXXX号</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="scroll-top" id="scrollTop" title="回到顶部">↑</div>
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/article.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于唐子琪 - 小唐学编程的记录</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/about.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">📖</span>
+        <span class="logo-text">小唐学编程</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="tags.html" class="nav-link">标签</a>
+        <a href="about.html" class="nav-link active">关于</a>
+        <a href="admin.html" class="nav-link nav-link-admin">✏️ 写文章</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <span class="theme-icon light-icon">☀️</span>
+          <span class="theme-icon dark-icon">🌙</span>
+        </button>
+        <button class="nav-menu-btn" id="navMenuBtn" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="nav-mobile-menu" id="navMobileMenu">
+      <a href="index.html" class="mobile-link">首页</a>
+      <a href="tags.html" class="mobile-link">标签</a>
+      <a href="about.html" class="mobile-link active">关于</a>
+      <a href="admin.html" class="mobile-link">✏️ 写文章</a>
+    </div>
+  </nav>
+
+  <main class="about-main">
+    <!-- Hero 区域 -->
+    <section class="about-hero">
+      <div class="about-hero-bg"></div>
+      <div class="about-hero-content">
+        <div class="about-avatar-wrapper">
+        <div class="about-avatar">👩‍💻</div>
+        <div class="about-avatar-ring"></div>
+      </div>
+      <h1 class="about-name">唐子琪</h1>
+      <p class="about-title">编程学习者 · 全栈探索者 · 小唐学编程</p>
+      <p class="about-bio-short">喜欢把学到的东西写下来，相信"费曼学习法"是最好的巩固方式。<br/>代码是我探索世界的工具，文字是我整理思维的方式。</p>
+        <div class="about-contact-row">
+          <a href="https://github.com" target="_blank" class="contact-btn github-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+          <a href="mailto:hello@codejourney.dev" class="contact-btn email-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            发送邮件
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="about-container container">
+
+      <!-- 个人简介 -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-icon">👋</span>
+          <h2 class="section-heading">关于我</h2>
+        </div>
+        <div class="about-story">
+          <p>大家好！我是 <strong>CodeLearner</strong>，一个热爱编程的自学者。</p>
+          <p>我的编程之旅始于 2022 年，那时候我对代码一无所知，但被它的魔力深深吸引。从最开始对 <code>console.log("Hello World")</code> 感到神奇，到现在能独立开发完整的全栈项目，这段旅程充满了挫折、惊喜和成就感。</p>
+          <p>这个博客是我的学习笔记和成长记录。我相信，把知识写下来是最好的学习方式——不仅能巩固自己的理解，也许还能帮助到同样在学习路上的你。</p>
+          <p>如果你也在学编程，欢迎交流！不管是技术问题还是学习困惑，我们可以一起探讨。</p>
+        </div>
+      </section>
+
+      <!-- 技术栈 -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-icon">🛠️</span>
+          <h2 class="section-heading">技术栈</h2>
+        </div>
+        <div class="tech-grid" id="techGrid">
+          <!-- 由 JS 渲染 -->
+        </div>
+      </section>
+
+      <!-- 学习路线 -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-icon">🗺️</span>
+          <h2 class="section-heading">学习路线</h2>
+        </div>
+        <p class="section-desc">记录我从零开始的编程成长轨迹</p>
+        <div class="timeline" id="timeline">
+          <!-- 由 JS 渲染 -->
+        </div>
+      </section>
+
+      <!-- 学习进度 -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-icon">📊</span>
+          <h2 class="section-heading">技术掌握程度</h2>
+        </div>
+        <p class="section-desc">自我评估，仅供参考（10 分制）</p>
+        <div class="skills-radar-container">
+          <canvas id="skillsChart" width="400" height="400"></canvas>
+          <div class="skills-bars" id="skillsBars">
+            <!-- 由 JS 渲染 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 博客统计 -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-icon">📈</span>
+          <h2 class="section-heading">博客数据</h2>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-icon">📝</div>
+            <div class="stat-card-num" data-count="24">0</div>
+            <div class="stat-card-label">发布文章</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">🏷️</div>
+            <div class="stat-card-num" data-count="16">0</div>
+            <div class="stat-card-label">覆盖标签</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">📅</div>
+            <div class="stat-card-num" data-count="365">0</div>
+            <div class="stat-card-label">坚持天数</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon">⭐</div>
+            <div class="stat-card-num" data-count="100">0</div>
+            <div class="stat-card-label">GitHub Stars</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 联系方式 -->
+      <section class="about-section">
+        <div class="section-header">
+          <span class="section-icon">💌</span>
+          <h2 class="section-heading">联系我</h2>
+        </div>
+        <div class="contact-grid">
+          <a href="https://github.com" target="_blank" class="contact-card">
+            <div class="contact-card-icon github-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-name">GitHub</div>
+              <div class="contact-card-value">@CodeLearner</div>
+            </div>
+            <div class="contact-card-arrow">→</div>
+          </a>
+          <a href="mailto:hello@codejourney.dev" class="contact-card">
+            <div class="contact-card-icon email-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div class="contact-card-info">
+              <div class="contact-card-name">邮箱</div>
+              <div class="contact-card-value">hello@codejourney.dev</div>
+            </div>
+            <div class="contact-card-arrow">→</div>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">⌨️ CodeJourney</div>
+          <p class="footer-tagline">用代码丈量世界，用文字记录成长</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" title="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>导航</h4>
+            <a href="index.html">首页</a>
+            <a href="tags.html">标签分类</a>
+            <a href="about.html">关于我</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 CodeJourney · 用心记录，持续成长</p>
+        <p class="footer-icp">粤ICP备XXXXXXXX号</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="scroll-top" id="scrollTop" title="回到顶部">↑</div>
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/about.js"></script>
+</body>
+</html>
